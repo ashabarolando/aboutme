@@ -583,6 +583,24 @@
   @keyframes typing { from { width: 0; } to { width: 100%; } }
   @keyframes cursor-blink { 0%,100% { border-color: transparent; } 50% { border-color: var(--accent); } }
 
+
+  .skill-icon svg, .role-icon svg {
+    color: var(--accent);
+    display: block;
+  }
+  .skill-icon svg {
+    width: 28px; height: 28px;
+  }
+  .role-icon svg {
+    width: 48px; height: 48px;
+    margin: 0 auto;
+  }
+  .role-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+
   /* FADE IN on load */
   .fade-in {
     opacity: 0;
@@ -686,32 +704,32 @@
 
   <div class="skills-grid">
     <div class="skill-card">
-      <div class="skill-icon">⚙️</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
       <div class="skill-name">Backend Dev</div>
       <div class="skill-desc">Python, PHP, Java, C — server-side logic & scripting</div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🗄️</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
       <div class="skill-name">Databases</div>
       <div class="skill-desc">SQL, database design & management, BI & warehousing</div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">📡</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></div>
       <div class="skill-name">Systems</div>
       <div class="skill-desc">Networking, sysadmin, IoT, mobile computing</div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">📲</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
       <div class="skill-name">Digital Marketing</div>
       <div class="skill-desc">Campaign strategy, content creation, influencer reach</div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🌐</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
       <div class="skill-name">Web & Mobile</div>
       <div class="skill-desc">HTML, CSS, web design & mobile app programming</div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🤖</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M12 11V7"/><circle cx="12" cy="5" r="2"/><path d="M8 15h.01M16 15h.01M8 19h8"/></svg></div>
       <div class="skill-name">AI & Analytics</div>
       <div class="skill-desc">AI fundamentals, business intelligence, data insights</div>
     </div>
@@ -728,7 +746,7 @@
   <div class="roles-grid">
     <div class="role-card">
       <div class="role-num">01 ——</div>
-      <span class="role-icon">💻</span>
+      <span class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><polyline points="8 9 12 13 16 9"/></svg></span>
       <h3 class="role-title">Backend Developer</h3>
       <p class="role-desc">Building the engines that power digital products. Server-side logic, database architecture, and system design that scales.</p>
       <div class="role-tags">
@@ -742,7 +760,7 @@
 
     <div class="role-card">
       <div class="role-num">02 ——</div>
-      <span class="role-icon">📊</span>
+      <span class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
       <h3 class="role-title">Digital Marketer</h3>
       <p class="role-desc">Crafting and executing multi-platform campaigns for banks, health orgs, tech brands, and hospitality — strategy to analytics.</p>
       <div class="role-tags">
@@ -755,7 +773,7 @@
 
     <div class="role-card">
       <div class="role-num">03 ——</div>
-      <span class="role-icon">🎙️</span>
+      <span class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></span>
       <h3 class="role-title">Social Media Influencer</h3>
       <p class="role-desc">A trusted voice across Uganda's digital space. Brand ambassador, live event coverage, and authentic audience engagement at scale.</p>
       <div class="role-tags">
@@ -796,14 +814,14 @@
 
     <div class="social-links">
       <a href="https://x.com/InfluencerUg1" target="_blank" class="social-btn">
-        𝕏 @InfluencerUg1
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;flex-shrink:0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.751-8.874L2.25 2.25h6.977l4.253 5.622 5.764-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> @InfluencerUg1
       </a>
-      <a href="mailto:ashabarolando@gmail.com" class="social-btn">
-        ✉ Email Me
+      <a href="/cdn-cgi/l/email-protection#f392809b929192819c9f929d979cb3949e929a9fdd909c9e" class="social-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email Me
       </a>
     </div>
 
-    <a href="mailto:ashabarolando@gmail.com" class="email-link">ashabarolando@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#1d7c6e757c7f7c6f72717c7379725d7a707c7471337e7270" class="email-link"><span class="__cf_email__" data-cfemail="21405249404340534e4d404f454e61464c40484d0f424e4c">[email&#160;protected]</span></a>
   </div>
 </section>
 
@@ -811,7 +829,7 @@
   <p>Built with intention · <span>Rolando Ashaba</span> © 2025 · Kampala, Uganda 🇺🇬</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
@@ -852,14 +870,4 @@
         entry.target.style.transform = 'translateY(0)';
       }
     });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.skill-card, .role-card, .brand-pill').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
-</script>
-</body>
-</html>
+  }, { thresh
