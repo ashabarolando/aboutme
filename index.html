@@ -10,8 +10,8 @@
   :root {
     --bg: #070b12;
     --bg2: #0d1320;
-    --glass: rgba(255,255,255,0.04);
-    --glass-border: rgba(255,255,255,0.08);
+    --glass: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.12);
     --accent: #00f5a0;
     --accent2: #00c8f5;
     --text: #e8edf5;
@@ -352,7 +352,7 @@
   }
   .skill-card:hover::before { transform: scaleX(1); }
   .skill-card:hover {
-    background: rgba(255,255,255,0.07);
+    background: rgba(0,245,160,0.07);
     transform: translateY(-3px);
     border-color: rgba(0,245,160,0.2);
     box-shadow: 0 8px 30px rgba(0,245,160,0.08);
@@ -816,12 +816,12 @@
       <a href="https://x.com/InfluencerUg1" target="_blank" class="social-btn">
         <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;flex-shrink:0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.751-8.874L2.25 2.25h6.977l4.253 5.622 5.764-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> @InfluencerUg1
       </a>
-      <a href="/cdn-cgi/l/email-protection#f392809b929192819c9f929d979cb3949e929a9fdd909c9e" class="social-btn">
+      <a id="emailBtn" href="#" class="social-btn" onclick="this.href='mailto:ashabarolando@gmail.com'">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email Me
       </a>
     </div>
 
-    <a href="/cdn-cgi/l/email-protection#1d7c6e757c7f7c6f72717c7379725d7a707c7471337e7270" class="email-link"><span class="__cf_email__" data-cfemail="21405249404340534e4d404f454e61464c40484d0f424e4c">[email&#160;protected]</span></a>
+    <a href="#" class="email-link" onclick="this.href='mailto:ashabarolando@gmail.com'">ashabarolando@gmail.com</a>
   </div>
 </section>
 
@@ -829,7 +829,7 @@
   <p>Built with intention · <span>Rolando Ashaba</span> © 2025 · Kampala, Uganda 🇺🇬</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
@@ -863,11 +863,4 @@
   });
 
   // Intersection observer for fade-in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { thresh
+  const observer = new IntersectionObserver((e
