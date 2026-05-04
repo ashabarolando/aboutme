@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rolando | Dev × Digital</title>
+<title>Rolando | Software Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -17,6 +17,22 @@
     --text: #e8edf5;
     --muted: #5a6478;
     --glow: rgba(0,245,160,0.15);
+    --nav-bg: rgba(7,11,18,0.6);
+    --shadow: rgba(0,0,0,0.4);
+  }
+
+  :root.light {
+    --bg: #f0f4f0;
+    --bg2: #e4ebe4;
+    --glass: rgba(0,0,0,0.04);
+    --glass-border: rgba(0,0,0,0.10);
+    --accent: #00a86b;
+    --accent2: #0088b0;
+    --text: #0d1a10;
+    --muted: #6b7d70;
+    --glow: rgba(0,168,107,0.15);
+    --nav-bg: rgba(240,244,240,0.75);
+    --shadow: rgba(0,0,0,0.12);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,6 +40,7 @@
   html { scroll-behavior: smooth; }
 
   body {
+    transition: background 0.4s ease, color 0.4s ease;
     font-family: 'JetBrains Mono', monospace;
     background: var(--bg);
     color: var(--text);
@@ -39,8 +56,10 @@
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    transition: transform 0.1s;
+    transition: transform 0.15s ease, opacity 0.3s;
     mix-blend-mode: screen;
+    opacity: 0;
+    will-change: left, top;
   }
   .cursor-ring {
     position: fixed;
@@ -49,7 +68,9 @@
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
-    transition: all 0.15s ease;
+    transition: transform 0.2s ease, opacity 0.3s;
+    opacity: 0;
+    will-change: left, top;
   }
 
   /* Background grid */
@@ -90,7 +111,7 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.5rem 4rem;
     backdrop-filter: blur(20px);
-    background: rgba(7,11,18,0.6);
+    background: var(--nav-bg);
     border-bottom: 1px solid var(--glass-border);
   }
   .nav-logo {
@@ -407,7 +428,7 @@
   .role-card:hover {
     transform: translateY(-6px);
     border-color: rgba(0,245,160,0.25);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 60px var(--shadow);
   }
 
   .role-num {
@@ -633,6 +654,74 @@
     .connect-card { padding: 2.5rem 1.5rem; }
     .photo-frame { width: 280px; height: 350px; }
   }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    width: 44px;
+    height: 24px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+  }
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px var(--glow);
+  }
+  .toggle-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(0);
+  }
+  :root.light .toggle-thumb {
+    transform: translateX(20px);
+  }
+  .toggle-thumb svg {
+    width: 10px;
+    height: 10px;
+    color: #070b12;
+    position: absolute;
+    transition: opacity 0.2s;
+  }
+  .icon-moon { opacity: 1; }
+  .icon-sun  { opacity: 0; }
+  :root.light .icon-moon { opacity: 0; }
+  :root.light .icon-sun  { opacity: 1; }
+
+  /* light mode overrides for blobs */
+  :root.light .blob { opacity: 0.06; }
+  :root.light .blob1 { background: #00a86b; }
+  :root.light .blob2 { background: #0088b0; }
+  :root.light .blob3 { background: #5b3fff; }
+
+  /* light mode body grid */
+  :root.light body::before {
+    background-image:
+      linear-gradient(rgba(0,168,107,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,168,107,0.05) 1px, transparent 1px);
+  }
+
+  /* light mode photo border */
+  :root.light .photo-frame::before {
+    background: linear-gradient(135deg, var(--accent), var(--accent2), transparent, var(--accent));
+  }
+
+  /* light mode cursor ring */
+  :root.light .cursor-ring {
+    border-color: rgba(0,168,107,0.5);
+  }
 </style>
 </head>
 <body>
@@ -647,11 +736,19 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">R<span>.</span>dev</div>
-  <div class="nav-links">
+  <div style="display:flex;align-items:center;gap:2.5rem;">
+    <div class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
+      <div class="toggle-thumb">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </div>
+    </div>
+    <div class="nav-links">
     <a href="#about">About</a>
     <a href="#roles">What I Do</a>
     <a href="#brands">Brands</a>
     <a href="#connect">Connect</a>
+    </div>
   </div>
 </nav>
 
@@ -664,7 +761,7 @@
       Rolando<br><span class="accent">Ashaba.</span>
     </h1>
     <p class="hero-title fade-in delay-2">
-      Backend Dev · <span>Digital Marketer</span> · Influencer
+      Software Engineer · <span>Digital Marketer</span> · Influencer
     </p>
     <p class="hero-desc fade-in delay-3">
       I build robust backend systems and craft digital campaigns that connect brands with real audiences. From server-side logic to social media strategy — I work where code meets culture.
@@ -821,7 +918,7 @@
       </a>
     </div>
 
-    <a href="#" class="email-link" onclick="this.href='mailto:ashabarolando@gmail.com'">ashabarolando@gmail.com</a>
+    <a href="#" class="email-link" onclick="this.href='mailto:ashabarolando@gmail.com'"><span class="__cf_email__" data-cfemail="2746544f46454655484b4649434867404a464e4b0944484a">[email&#160;protected]</span></a>
   </div>
 </section>
 
@@ -829,21 +926,95 @@
   <p>Built with intention · <span>Rolando Ashaba</span> © 2025 · Kampala, Uganda 🇺🇬</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+
+  // Load saved preference
+  if (localStorage.getItem('theme') === 'light') {
+    root.classList.add('light');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    root.classList.toggle('light');
+    localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    // update cursor ring color
+    const isLight = root.classList.contains('light');
+    ring.style.borderColor = isLight ? 'rgba(0,168,107,0.5)' : 'rgba(0,245,160,0.4)';
+  });
+
+</script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+
+  // Load saved preference
+  if (localStorage.getItem('theme') === 'light') {
+    root.classList.add('light');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    root.classList.toggle('light');
+    localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    // update cursor ring color
+    const isLight = root.classList.contains('light');
+    ring.style.borderColor = isLight ? 'rgba(0,168,107,0.5)' : 'rgba(0,245,160,0.4)';
+  });
+
+</script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+
+  // Load saved preference
+  if (localStorage.getItem('theme') === 'light') {
+    root.classList.add('light');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    root.classList.toggle('light');
+    localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    // update cursor ring color
+    const isLight = root.classList.contains('light');
+    ring.style.borderColor = isLight ? 'rgba(0,168,107,0.5)' : 'rgba(0,245,160,0.4)';
+  });
+
+</script><script>
   // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
+  let cursorVisible = false;
+
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx - 5 + 'px';
-    cursor.style.top  = my - 5 + 'px';
+    cursor.style.left = (mx - 5) + 'px';
+    cursor.style.top  = (my - 5) + 'px';
+    if (!cursorVisible) {
+      cursorVisible = true;
+      cursor.style.opacity = '1';
+      ring.style.opacity = '1';
+    }
   });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    if (cursorVisible) {
+      cursor.style.opacity = '1';
+      ring.style.opacity = '1';
+    }
+  });
+
   function animateRing() {
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
-    ring.style.left = rx - 18 + 'px';
-    ring.style.top  = ry - 18 + 'px';
+    ring.style.left = (rx - 18) + 'px';
+    ring.style.top  = (ry - 18) + 'px';
     requestAnimationFrame(animateRing);
   }
   animateRing();
@@ -857,10 +1028,3 @@
     });
     el.addEventListener('mouseleave', () => {
       cursor.style.transform = 'scale(1)';
-      ring.style.transform = 'scale(1)';
-      ring.style.borderColor = 'rgba(0,245,160,0.4)';
-    });
-  });
-
-  // Intersection observer for fade-in on scroll
-  const observer = new IntersectionObserver((e
